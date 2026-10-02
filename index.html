@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Konopka - Web Developer</title>
     <link rel="stylesheet" href="./public/styles.css">
-    <title>Kontakt Adam Konopka</title>
 </head>
 
 <body>
     <main>
+        <button data-trigger="flip-page" class="button button--flip" aria-label="Obróć stronę"></button>
         <section>
-            <div class="wrapper">
-                <h1>Adam Konopka</h1>
-                <p>Web Developer</p>
+            <div class="page" data-target="page">
+                <div class="page-front">
+                    <h1 class="page__title">Adam Konopka</h1>
+                    <p class="page__subtitle">Web Developer</p>
 
-                <a id="contact-email" href="#">Pobieranie adresu...</a>
+                    <a id="contact-email" href="#" class="link">Pobieranie adresu...</a>
+
+                    <a href="https://github.com/kanapka94" class="link" target="_blank" rel="noopener">GitHub</a>
+                </div>
+                <div class="page-back">
+                    <div class="colors-box">
+                        <div class="colors-box__item colors-box__item--cyan"></div>
+                        <div class="colors-box__item colors-box__item--pink"></div>
+                        <div class="colors-box__item colors-box__item--orange"></div>
+                        <div class="colors-box__item colors-box__item--gray"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
