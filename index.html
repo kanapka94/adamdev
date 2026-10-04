@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,28 +10,39 @@
 
 <body>
     <main>
-        <button data-trigger="flip-page" class="button button--flip" aria-label="Obróć stronę"></button>
+        <button data-trigger="flip-page" class="button button--flip" aria-label="Flip page" aria-expanded="false"></button>
         <section>
             <div class="page" data-target="page">
                 <div class="page-front">
                     <h1 class="page__title">Adam Konopka</h1>
                     <p class="page__subtitle">Web Developer</p>
 
-                    <a id="contact-email" href="#" class="link">Pobieranie adresu...</a>
+                    <a id="contact-email" href="#" class="link">Loading email address...</a>
+                    <a href="https://github.com/kanapka94" class="link" target="_blank" rel="noopener">
+                        GitHub <span class="sr-only">(opens in a new tab)</span>
+                    </a>
 
-                    <a href="https://github.com/kanapka94" class="link" target="_blank" rel="noopener">GitHub</a>
+                    <div class="divider"></div>
+                    <h2 class="page__title">Projects</h2>
+                    <ul>
+                        <li>
+                            <a href="https://drinks.adamdev.it" target="_blank" rel="noopener">
+                                drinks <span class="sr-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="page-back">
                     <div class="colors-box">
-                        <button data-trigger="color-button" data-color="primary"
+                        <button data-trigger="color-button" data-color="primary" aria-label="Change background color to primary"
                             class="colors-box__item colors-box__item--primary"></button>
-                        <button data-trigger="color-button" data-color="cyan"
+                        <button data-trigger="color-button" data-color="cyan" aria-label="Change background color to cyan"
                             class="colors-box__item colors-box__item--cyan"></button>
-                        <button data-trigger="color-button" data-color="pink"
+                        <button data-trigger="color-button" data-color="pink" aria-label="Change background color to pink"
                             class="colors-box__item colors-box__item--pink"></button>
-                        <button data-trigger="color-button" data-color="orange"
+                        <button data-trigger="color-button" data-color="orange" aria-label="Change background color to orange"
                             class="colors-box__item colors-box__item--orange"></button>
-                        <button data-trigger="color-button" data-color="gray"
+                        <button data-trigger="color-button" data-color="gray" aria-label="Change background color to gray"
                             class="colors-box__item colors-box__item--gray"></button>
                     </div>
                 </div>

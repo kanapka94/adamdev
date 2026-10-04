@@ -12,8 +12,8 @@ body {
 }
 
 .button--flip {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border: none;
     background: #93cca7;
     box-shadow: inset -2px -2px 5px #689079;
@@ -30,6 +30,23 @@ body {
 
 .button--flip:active {
     background: rgb(175, 205, 207);
+}
+
+:focus-visible {
+    outline: 3px solid #8332ac;
+    outline-offset: 3px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 section {
@@ -82,13 +99,22 @@ section {
 
 .colors-box {
     display: flex;
-    gap: 5px;
+    gap: 8px;
 }
 
 .colors-box__item {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
     border: 4px solid #fff;
+    transition: ease-out 0.5s;
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    .colors-box__item:hover {
+        transform: scale(1.1);
+        transition: ease-out 0.2s;
+    }
 }
 
 .colors-box__item--primary {

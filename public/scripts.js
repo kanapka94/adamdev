@@ -12,6 +12,8 @@
 
     const elements = {
         page: document.querySelector('[data-target="page"]'),
+        pageFront: document.querySelector('.page-front'),
+        pageBack: document.querySelector('.page-back'),
         flipPageButton: document.querySelector('[data-trigger="flip-page"]'),
     };
 
@@ -44,6 +46,18 @@
                 elements.page.classList.add("flipped");
             } else {
                 elements.page.classList.remove("flipped");
+            }
+
+            if (elements.flipPageButton) {
+                elements.flipPageButton.setAttribute("aria-expanded", String(value));
+            }
+
+            if (elements.pageFront && elements.pageBack) {
+                elements.pageFront.inert = value;
+                elements.pageFront.setAttribute("aria-hidden", String(value));
+
+                elements.pageBack.inert = !value;
+                elements.pageBack.setAttribute("aria-hidden", String(!value));
             }
         });
     }
