@@ -1,0 +1,10 @@
+{
+  "name": "adamdev.it",
+  "author": {
+    "name": "Adam Konopka",
+    "email": "web@adamdev.it"
+  },
+  "scripts": {
+    "dev": "bun index.html"
+  }
+}

@@ -10,7 +10,13 @@
 
 <body>
     <main>
-        <button data-trigger="flip-page" class="button button--flip" aria-label="Flip page" aria-expanded="false"></button>
+        <button data-trigger="flip-page" class="button button--ghost button--flip" aria-label="Flip page"
+            aria-expanded="false">
+            <i data-feather="refresh-ccw"></i>
+        </button>
+        <button data-trigger="change-theme" class="button button--theme button--ghost" aria-label="Change page theme">
+            <i data-feather="droplet"></i>
+        </button>
         <section>
             <div class="page" data-target="page">
                 <div class="page-front">
@@ -34,15 +40,20 @@
                 </div>
                 <div class="page-back">
                     <div class="colors-box">
-                        <button data-trigger="color-button" data-color="primary" aria-label="Change background color to primary"
+                        <button data-trigger="color-button" data-color="primary"
+                            aria-label="Change background color to primary"
                             class="colors-box__item colors-box__item--primary"></button>
-                        <button data-trigger="color-button" data-color="cyan" aria-label="Change background color to cyan"
+                        <button data-trigger="color-button" data-color="cyan"
+                            aria-label="Change background color to cyan"
                             class="colors-box__item colors-box__item--cyan"></button>
-                        <button data-trigger="color-button" data-color="pink" aria-label="Change background color to pink"
+                        <button data-trigger="color-button" data-color="pink"
+                            aria-label="Change background color to pink"
                             class="colors-box__item colors-box__item--pink"></button>
-                        <button data-trigger="color-button" data-color="orange" aria-label="Change background color to orange"
+                        <button data-trigger="color-button" data-color="orange"
+                            aria-label="Change background color to orange"
                             class="colors-box__item colors-box__item--orange"></button>
-                        <button data-trigger="color-button" data-color="gray" aria-label="Change background color to gray"
+                        <button data-trigger="color-button" data-color="gray"
+                            aria-label="Change background color to gray"
                             class="colors-box__item colors-box__item--gray"></button>
                     </div>
                 </div>
@@ -50,6 +61,7 @@
         </section>
     </main>
 
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="./public/scripts.js"></script>
 </body>
 

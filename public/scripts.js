@@ -1,20 +1,13 @@
 (function () {
-    const themeColors = {
-        primary: "#bad1cd",
-        cyan: "#2ee1f2",
-        pink: "#e086d3",
-        orange: "#e0ac86",
-        gray: "#999999",
-    };
-
     const isFlipped = createSignal(false);
-    const primaryColor = createSignal(themeColors.primary);
+    const primaryColor = createSignal('var(--color-primary)');
 
     const elements = {
         page: document.querySelector('[data-target="page"]'),
         pageFront: document.querySelector('.page-front'),
         pageBack: document.querySelector('.page-back'),
         flipPageButton: document.querySelector('[data-trigger="flip-page"]'),
+        changeThemeButton: document.querySelector('[data-trigger="change-theme"]'),
     };
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +18,9 @@
         loadMail();
         bindFlipPage();
         bindClickColorButton();
+        bindIcons();
+        bindThemeButton();
+        loadSystemTheme();
     }
 
     function loadMail() {
@@ -81,9 +77,39 @@
     }
 
     function changeColor(colorKey) {
-        if (themeColors[colorKey]) {
-            primaryColor.value = themeColors[colorKey];
+        if (getThemeColor(colorKey)) {
+            primaryColor.value = `var(--color-${colorKey})`;
         }
+    }
+
+    function loadSystemTheme() {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (prefersDark) {
+            changeTheme();
+        }
+    }
+
+    function bindIcons() {
+        feather.replace();
+    }
+
+    function bindThemeButton() {
+        elements.changeThemeButton.addEventListener("click", () => {
+            changeTheme();
+        });
+    }
+
+    function changeTheme() {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+    }
+
+    function getThemeColor(colorKey) {
+        return getComputedStyle(document.documentElement)
+            .getPropertyValue(`--color-${colorKey}`)
+            .trim();
     }
 
     function createSignal(initialValue) {
@@ -106,4 +132,4 @@
             },
         };
     }
-})()
+})()
