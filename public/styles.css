@@ -15,14 +15,17 @@ body {
     width: 30px;
     height: 30px;
     border: none;
-    background: #e086d3;
+    background: #93cca7;
+    box-shadow: inset -2px -2px 5px #689079;
     transition: ease-out 0.2s;
     cursor: pointer;
 }
 
-.button--flip:hover {
-    background: #ccc;
-    transition: ease-out 0s;
+@media (hover: hover) {
+    .button--flip:hover {
+        background: #ffffff;
+        transition: ease-out 0.5s;
+    }
 }
 
 .button--flip:active {
@@ -86,6 +89,10 @@ section {
     width: 24px;
     height: 24px;
     border: 4px solid #fff;
+}
+
+.colors-box__item--primary {
+    background-color: #bad1cd;
 }
 
 .colors-box__item--cyan {

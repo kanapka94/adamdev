@@ -1,28 +1,28 @@
 (function () {
-    const state = {
-        isFlipped: false,
+    const themeColors = {
+        primary: "#bad1cd",
+        cyan: "#2ee1f2",
+        pink: "#e086d3",
+        orange: "#e0ac86",
+        gray: "#999999",
     };
+
+    const isFlipped = createSignal(false);
+    const primaryColor = createSignal(themeColors.primary);
 
     const elements = {
         page: document.querySelector('[data-target="page"]'),
         flipPageButton: document.querySelector('[data-trigger="flip-page"]'),
-    }
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
         bindUI();
     });
 
-    watchState('isFlipped', (value) => {
-        if (value) {
-            elements.page.classList.add("flipped");
-        } else {
-            elements.page.classList.remove("flipped");
-        }
-    })
-
     function bindUI() {
         loadMail();
         bindFlipPage();
+        bindClickColorButton();
     }
 
     function loadMail() {
@@ -37,32 +37,59 @@
     function bindFlipPage() {
         elements.flipPageButton.addEventListener("click", () => {
             flipPage();
-        })
+        });
+
+        isFlipped.subscribe((value) => {
+            if (value) {
+                elements.page.classList.add("flipped");
+            } else {
+                elements.page.classList.remove("flipped");
+            }
+        });
     }
 
     function flipPage() {
-        state.isFlipped = !state.isFlipped;
+        isFlipped.value = !isFlipped.value;
     }
 
-    function watchState(stateProp, callback) {
-        let value = state[stateProp];
+    function bindClickColorButton() {
+        const buttons = document.querySelectorAll('[data-trigger="color-button"]');
 
-        if (typeof value === 'undefined') {
-            console.error("State property is not defined");
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                changeColor(button.dataset.color);
+            });
+        });
 
-            return;
+        primaryColor.subscribe((value) => {
+            document.body.style.backgroundColor = value;
+        });
+    }
+
+    function changeColor(colorKey) {
+        if (themeColors[colorKey]) {
+            primaryColor.value = themeColors[colorKey];
         }
+    }
 
-        Object.defineProperty(state, stateProp, {
-            set: function (newValue) {
-                value = newValue;
-                callback(newValue);
-            },
-            get: function () {
+    function createSignal(initialValue) {
+        let value = initialValue;
+        const subscribers = new Set();
+
+        return {
+            get value() {
                 return value;
             },
-            enumerable: true,
-            configurable: true,
-        })
+            set value(newValue) {
+                if (value !== newValue) {
+                    value = newValue;
+                    subscribers.forEach((callback) => callback(value));
+                }
+            },
+            subscribe(callback) {
+                subscribers.add(callback);
+                return () => subscribers.delete(callback);
+            },
+        };
     }
-})()
+})()
