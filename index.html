@@ -10,13 +10,17 @@
 
 <body>
     <main>
-        <button data-trigger="flip-page" class="button button--ghost button--flip" aria-label="Flip page"
-            aria-expanded="false">
-            <i data-feather="refresh-ccw"></i>
-        </button>
-        <button data-trigger="change-theme" class="button button--theme button--ghost" aria-label="Change page theme">
-            <i data-feather="droplet"></i>
-        </button>
+        <nav class="dock" aria-label="Quick actions">
+            <div class="dock__container">
+                <button data-trigger="flip-page" class="dock__button dock__button--flip" aria-label="Flip page"
+                    aria-expanded="false">
+                    <i data-feather="refresh-ccw" class="dock__icon"></i>
+                </button>
+                <button data-trigger="change-theme" class="dock__button dock__button--theme" aria-label="Change page theme">
+                    <i data-feather="droplet" class="dock__icon"></i>
+                </button>
+            </div>
+        </nav>
         <section>
             <div class="page" data-target="page">
                 <div class="page-front">
@@ -24,13 +28,15 @@
                     <p class="page__subtitle">Web Developer</p>
 
                     <a id="contact-email" href="#" class="link">Loading email address...</a>
-                    <a href="https://github.com/kanapka94" class="link" target="_blank" rel="noopener">
-                        GitHub <span class="sr-only">(opens in a new tab)</span>
-                    </a>
 
                     <div class="divider"></div>
                     <h2 class="page__title">Projects</h2>
                     <ul>
+                        <li>
+                            <a href="https://github.com/kanapka94" target="_blank" rel="noopener">
+                                GitHub <span class="sr-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="https://drinks.adamdev.it" target="_blank" rel="noopener">
                                 drinks <span class="sr-only">(opens in a new tab)</span>
